@@ -8,17 +8,15 @@
 
 import SwiftUI
 
-
 struct EmojiMemoryGameView: View {
    @ObservedObject var memoryGame: EmojiMemoryGame
     var body: some View {
-        HStack () {
-            ForEach(memoryGame.cards, content:  { card in
+        Grid (memoryGame.cards) { card in
                 CardView(card: card)
                     .onTapGesture {
                         self.memoryGame.choose(card: card)
                 }
-            })
+                .padding(5)
         }
         .padding()
         .foregroundColor(Color.orange)
